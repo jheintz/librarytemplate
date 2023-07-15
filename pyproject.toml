@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=0.21.5"]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=0.21.5", "Cython", "setuptools>=61.0"]
 build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry-dynamic-versioning]
@@ -8,22 +8,23 @@ vcs = "git"
 style = "semver"
 
 [tool.poetry]
-name = "pythontemplate"
+name = "librarytemplate"
 version = "0.0.0"  # Do not change, let poetry-dynamic-versioning handle it.
-homepage = "https://github.com/GIT_USERNAME/GIT_REPONAME"
-repository = "https://github.com/GIT_USERNAME/GIT_REPONAME"
+homepage = "https://github.com/jheintz/librarytemplate"
+repository = "https://github.com/jheintz/librarytemplate"
 license = "Apache-2.0"
 description = ""
-authors = ["YOUR_NAME_HERE"]
+authors = ["John Heintz"]
 readme = "README.rst"
-packages = [{include = "pythontemplate"}]
-include = ["pythontemplate/*.so", "pythontemplate/*.pyd"]  # Compiled extensions
+packages = [{include = "librarytemplate"}]
+include = ["librarytemplate/*.so", "librarytemplate/*.pyd"]  # Compiled extensions
 
 [tool.poetry.build]
+script = 'build.py'
 generate-setup-file = false
 
 [tool.poetry.scripts]
-pythontemplate = "pythontemplate.cli.main:run_app"
+librarytemplate = "librarytemplate.cli.main:run_app"
 
 [tool.poetry.dependencies]
 # Be as loose as possible if writing a library.

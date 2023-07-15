@@ -28,18 +28,18 @@ def build_cython_extensions():
         ]
     # Relative to project root director
     include_dirs = [
-        "pythontemplate/",
-        "pythontemplate/_c_src",
+        "librarytemplate/",
+        "librarytemplate/_c_src",
     ]
 
-    c_files = [str(x) for x in Path("pythontemplate/_c_src").rglob("*.c")]
+    c_files = [str(x) for x in Path("librarytemplate/_c_src").rglob("*.c")]
     extensions = [
         Extension(
             # Your .pyx file will be available to cpython at this location.
-            "pythontemplate._c_extension",
+            "librarytemplate._c_extension",
             [
                 # ".c" and ".pyx" source file paths
-                "pythontemplate/_c_extension.pyx",
+                "librarytemplate/_c_extension.pyx",
                 *c_files,
             ],
             include_dirs=include_dirs,

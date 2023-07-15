@@ -2,7 +2,7 @@
 
 This file acts as an interface between cython and C header files.
 
-Other pyx files will be able to "cimport cpythontemplate" to gain
+Other pyx files will be able to "cimport clibrarytemplate" to gain
 access to functions and structures defined here.
 
 This file should be a simple translation from existing c header file(s).

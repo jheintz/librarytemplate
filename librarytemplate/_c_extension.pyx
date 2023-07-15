@@ -1,4 +1,4 @@
-cimport cpythontemplate
+cimport clibrarytemplate
 # Invoke PyErr_CheckSignals occasionally if your C code runs long.
 # This allows your code to be interrupted via ctrl+c.
 from cpython.exc cimport PyErr_CheckSignals
@@ -7,11 +7,11 @@ from libc.stddef cimport size_t
 
 
 cdef class Foo:
-    cdef cpythontemplate.foo_t * _object
+    cdef clibrarytemplate.foo_t * _object
 
     def __cinit__(self):
         # Allocate objects here
-        self._object = <cpythontemplate.foo_t *>PyMem_Malloc(sizeof(cpythontemplate.foo_t))
+        self._object = <clibrarytemplate.foo_t *>PyMem_Malloc(sizeof(clibrarytemplate.foo_t))
         if self._object is NULL:
             raise MemoryError
 
@@ -19,8 +19,8 @@ cdef class Foo:
         PyMem_Free(self._object)
 
     def __init__(self):
-        cpythontemplate.foo_init(self._object)
+        clibrarytemplate.foo_init(self._object)
 
     def __call__(self):
         # invoke increment
-        cpythontemplate.foo_increment(self._object)
+        clibrarytemplate.foo_increment(self._object)

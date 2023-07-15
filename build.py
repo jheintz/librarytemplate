@@ -40,6 +40,7 @@ def build_cython_extensions():
             [
                 # ".c" and ".pyx" source file paths
                 "librarytemplate/_c_extension.pyx",
+                "librarytemplate/**/*.py",
                 *c_files,
             ],
             include_dirs=include_dirs,

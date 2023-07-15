@@ -1,10 +1,10 @@
 name: Build Wheels
 
 on:
-  pull_request:
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build_sdist:

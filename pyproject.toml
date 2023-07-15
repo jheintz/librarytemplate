@@ -30,6 +30,7 @@ librarytemplate = "librarytemplate.cli.main:run_app"
 # Be as loose as possible if writing a library.
 python = ">=3.8"
 typer = ">=0.7.0"
+numpy = "^1.22"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "~6.2.1"

@@ -1,5 +1,5 @@
-import numpy
+from .mod2 import wrap
 
 
 def adder(a, b):
-    return numpy.array(a) + numpy.array(b)
+    return wrap(a) + wrap(b)

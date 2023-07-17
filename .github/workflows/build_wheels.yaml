@@ -96,7 +96,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         #cibw_build: ["cp38-*", "cp39-*", "cp310-*", "cp311-*"]
-        cibw_build: ["cp311-*"]
+        cibw_build: ["cp310-*", "cp311-*"]
         cibw_archs: ["x86_64", "i686", "aarch64", "ppc64le"]
 
     steps:

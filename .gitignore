@@ -32,6 +32,10 @@ __pycache__/
 # C extensions
 *.so
 *.pyd
+*.c
+
+# Generated html
+*.html
 
 # Distribution / packaging
 .Python

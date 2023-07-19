@@ -33,7 +33,12 @@ def build_cython_extensions():
     ]
 
     c_files = [str(x) for x in Path("librarytemplate/_c_src").rglob("*.c")]
-    py_files = [str(x) for x in Path("librarytemplate/").rglob("*.py")]
+
+    py_extensions = [
+        Extension(f"librarytemplate.{x.stem}", [str(x)], extra_compile_args=extra_compile_args)
+        for x in Path("librarytemplate/").rglob("*.py")
+    ]
+
     extensions = [
         Extension(
             # Your .pyx file will be available to cpython at this location.
@@ -42,12 +47,12 @@ def build_cython_extensions():
                 # ".c" and ".pyx" source file paths
                 "librarytemplate/_c_extension.pyx",
                 *c_files,
-                *py_files,
             ],
             include_dirs=include_dirs,
             extra_compile_args=extra_compile_args,
             language="c",
         ),
+        *py_extensions
     ]
 
     include_dirs = set()

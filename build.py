@@ -34,13 +34,20 @@ def build_cython_extensions():
 
     #    c_files = [str(x) for x in Path("librarytemplate/_c_src").rglob("*.c")]
     [str(x) for x in Path("librarytemplate/").rglob("*.py")]
-    py_extensions = [
+    extensions = [
         Extension(f"librarytemplate.{x.stem}", [str(x)], extra_compile_args=extra_compile_args)
         for x in Path("librarytemplate/").rglob("*.py")
     ]
 
     extensions = [
-        *py_extensions,
+        Extension(
+            f"librarytemplate.{x.stem}",
+            [str(x)],
+        )
+        for x in Path("librarytemplate/").rglob("*.py")
+    ]
+    extensions = [
+        Extension("*", ["librarytemplate/**/*.py"], extra_compile_args=extra_compile_args),
     ]
 
     include_dirs = set()

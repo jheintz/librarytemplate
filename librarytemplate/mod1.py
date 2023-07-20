@@ -1,4 +1,4 @@
-from .mod2 import wrap
+from .p1.mod2 import wrap
 
 
 def adder(a, b):

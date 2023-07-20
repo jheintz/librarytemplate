@@ -17,7 +17,7 @@ description = ""
 authors = ["John Heintz"]
 readme = "README.rst"
 packages = [{include = "librarytemplate"}]
-include = ["librarytemplate/*.so", "librarytemplate/*.pyd"]  # Compiled extensions
+include = ["librarytemplate/**/*.so", "librarytemplate/**/*.pyd"]  # Compiled extensions
 exclude = [
     "librarytemplate/**/*.py"
 ]

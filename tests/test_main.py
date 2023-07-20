@@ -2,6 +2,7 @@ import pytest
 
 import librarytemplate
 from librarytemplate.mod1 import adder
+from librarytemplate.p1.mod2 import wrap
 
 
 @pytest.fixture

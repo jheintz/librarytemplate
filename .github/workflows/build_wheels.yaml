@@ -2,8 +2,6 @@ name: Build Wheels
 
 on:
   push:
-    branches:
-      - main
   pull_request:
 
 jobs:
@@ -97,7 +95,7 @@ jobs:
         os: [ubuntu-latest]
         #cibw_build: ["cp38-*", "cp39-*", "cp310-*", "cp311-*"]
         cibw_build: ["cp310-*", "cp311-*"]
-        cibw_archs: ["x86_64", "i686", "aarch64", "ppc64le"]
+        cibw_archs: ["x86_64", "i686"]
 
     steps:
       - name: Check out repository
@@ -229,22 +227,3 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           path: ./wheelhouse/*.whl
-
-  upload_to_pypi:
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
-    needs:
-      [
-        "build_sdist",
-        "build_wheels_windows",
-        "build_wheels_linux",
-        "build_wheels_macos",
-        "build_wheels_macos_arm64",
-      ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v3
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_TOKEN }}
-          packages_dir: artifact/
-          skip_existing: true
